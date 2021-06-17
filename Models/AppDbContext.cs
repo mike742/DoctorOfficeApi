@@ -19,5 +19,35 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Doctor>().HasData(
+            new Doctor
+            {
+                Id = 1,
+                Name = "Dr. Jack Smith"
+            },
+            new Doctor
+            {
+                Id = 2,
+                Name = "Dr. Adam West"
+            },
+            new Doctor
+            {
+                Id = 3,
+                Name = "Dr. Rachel Green"
+            }
+        );
+
+        modelBuilder.Entity<Patient>().HasData(
+            new Patient
+            {
+                Id = 1,
+                HealthNumber = 12301,
+                Name = "Patient Mark",
+                Address = "123, Main St., Winnipeg",
+                DateOfBirth = new DateTime(1997, 07, 12),
+                PhoneNumber = "204 123-4567"
+            }
+        );
     }
 }
